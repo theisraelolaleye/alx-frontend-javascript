@@ -6,6 +6,9 @@ interface Teacher {
   location: string;
   [key: string]: any;
 }
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
 
 const teacher3: Teacher = {
   firstName: "John",
@@ -14,10 +17,6 @@ const teacher3: Teacher = {
   location: "London",
   contract: true,
 };
-
-interface Directors extends Teacher {
-  numberOfReports: number;
-}
 
 const director1: Directors = {
   firstName: "Jane",
