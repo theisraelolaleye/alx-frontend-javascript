@@ -27,3 +27,4 @@ const director1: Directors = {
 };
 
 console.log(teacher3);
+console.log(director1);
