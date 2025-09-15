@@ -26,5 +26,9 @@ const director1: Director = {
   numberOfReports: 5,
 };
 
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName.charAt(0)} . ${lastName}`;
+}
+
 console.log(teacher3);
 console.log(director1);
