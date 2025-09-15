@@ -37,6 +37,7 @@ class Teacher implements TeacherInterface {
     return "Getting to work";
   }
 }
+
 function createEmployee(salary: number | string): Director | Teacher {
   if (typeof salary === "number") {
     if (salary < 500) {
@@ -53,7 +54,6 @@ function createEmployee(salary: number | string): Director | Teacher {
     }
   }
 }
-
 
 function isDirector(employee: Director | Teacher): employee is Director {
   return employee instanceof Director;
