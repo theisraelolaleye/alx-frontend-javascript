@@ -42,6 +42,10 @@ interface Student {
   workOnHomework(): string;
   displayName(): string;
 }
+interface StudentConstructor {
+  new(firstName: string, lastName: string): Student;
+}
+
 
 class StudentClass implements Student {
   firstName: string;
@@ -51,9 +55,11 @@ class StudentClass implements Student {
     this.firstName = firstName;
     this.lastName = lastName;
   }
+  
   workOnHomework(): string {
     return "Currently working";
   }
+  
   displayName(): string {
     return this.firstName;
   }
