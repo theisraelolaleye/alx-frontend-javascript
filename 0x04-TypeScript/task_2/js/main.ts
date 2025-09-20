@@ -1,3 +1,5 @@
+// Task 5: Advanced types Part 1
+
 interface DirectorInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
@@ -39,21 +41,13 @@ class Teacher implements TeacherInterface {
 }
 
 function createEmployee(salary: number | string): Director | Teacher {
-  if (typeof salary === "number") {
-    if (salary < 500) {
-      return new Teacher();
-    } else {
-      return new Director();
-    }
-  } else {
-    const numericSalary = parseFloat(salary);
-    if (numericSalary < 500) {
-      return new Teacher();
-    } else {
-      return new Director();
-    }
+  if (typeof salary === "number" && salary < 500) {
+    return new Teacher();
   }
+  return new Director();
 }
+
+// Task 6: Creating functions specific to employees
 
 function isDirector(employee: Director | Teacher): employee is Director {
   return employee instanceof Director;
@@ -67,6 +61,8 @@ function executeWork(employee: Director | Teacher): string {
   }
 }
 
+// Task 7: String literal types
+
 type Subjects = "Math" | "History";
 
 function teachClass(todayClass: Subjects): string {
@@ -74,20 +70,18 @@ function teachClass(todayClass: Subjects): string {
     return "Teaching Math";
   } else if (todayClass === "History") {
     return "Teaching History";
-  } else {
-    return "Unknown subject";
   }
+  // (TypeScript will ensure no other values possible)
 }
 
-// Example usage:
-const employee1 = createEmployee(200);
-console.log(employee1.workFromHome()); // Cannot work from home
-console.log(executeWork(employee1)); // Getting to work
+// -- Testing outputs --
 
-const employee2 = createEmployee(1000);
-console.log(employee2.workFromHome()); // Working from home
-console.log(executeWork(employee2)); // Getting to director tasks
+console.log(createEmployee(200));    // Teacher instance
+console.log(createEmployee(1000));   // Director instance
+console.log(createEmployee('$500')); // Director instance
 
-console.log(teachClass("Math")); // Teaching Math
-console.log(teachClass("History")); // Teaching History
-// console.log(teachClass("Science")); // Unknown subject (uncommenting this line will cause a TypeScript error)
+console.log(executeWork(createEmployee(200)));    // Getting to work
+console.log(executeWork(createEmployee(1000)));   // Getting to director tasks
+
+console.log(teachClass("Math"));     // Teaching Math
+console.log(teachClass("History"));  // Teaching History
