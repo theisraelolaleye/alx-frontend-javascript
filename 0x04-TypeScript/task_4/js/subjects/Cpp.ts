@@ -9,10 +9,14 @@ namespace Subjects {
     }
 
     getAvailableTeacher(): string {
-      if (this.teacher && this.teacher.experienceTeachingC && this.teacher.experienceTeachingC > 0) {
-        return `Available Teacher: ${this.teacher.firstName}`;
+      if (
+        !this.teacher ||
+        this.teacher.experienceTeachingC === undefined ||
+        this.teacher.experienceTeachingC <= 0
+      ) {
+        return "No available teacher";
       }
-      return "No available teacher";
+      return `Available Teacher: ${this.teacher.firstName}`;
     }
   }
 }

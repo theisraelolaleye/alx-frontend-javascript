@@ -1,13 +1,11 @@
+/// <reference path="./Teacher.ts" />
+
 namespace Subjects {
   export class Subject {
-    private _teacher?: Teacher;
+    teacher: Teacher;
 
-    setTeacher(teacher: Teacher): void {
-      this._teacher = teacher;
-    }
-
-    get teacher(): Teacher | undefined {
-      return this._teacher;
+    setTeacher(teacher: Teacher) {
+      this.teacher = teacher;
     }
   }
 }
